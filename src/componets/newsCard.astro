@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props{
+    name:string;
+    url?:string;
+    description:string;
+    image:string;
+}
+
+const {name , url , description , image} = Astro.props;
+---
+<div class="news-card">
+    <img src={image} alt="News Image">
+        <a href={url}>
+            <div class="news-content">
+              <h2>{name}</h2>
+              <p>{description}</p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+        </a>
+  </div>
+
+
+<style>
+    .news-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.news-card img {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.news-content {
+  padding: 20px;
+}
+
+.news-content h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.news-content p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.read-more {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+</style>

@@ -1,11 +1,143 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro"
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+
 ---
 
-<Layout>
-	<Welcome />
+
+<Layout title="Crosure">
+		
+		<div class="  rounded-lg p-5 flex space-x-4">
+			<section class=" w-[50%]  rounded-lg">
+ <span >
+	<p class=" text-black font-bold">
+	   codeThis!
+   </p>
+
+   <h1 class="text-6xl font-bold">
+	   Free Blog Research Bundit
+   </h1>
+   <p class=" p-4 text-pretty"> Get a head start on writing  your own full blog on this site  with the free resource  for people to reply and also ask questions about your blog </p>
+
+   <p class=" font-thin tile">Here's what's included:</p>
+<ul class=" p-4 font-extralight text-3xl">
+   <li>🍨 Responsive Design</li>
+   <li> ✨ Starter template files</li>
+   <li> 👩‍🎤 All images and icons</li>   
+   100% Free
+</ul>
+</span>
+<div class="mt-5 w-[500px] ">
+	<form  method="POST">
+		<div class="grid ">
+			<label for="title">First Name</label>
+			<input type="text" id="name" placeholder="Your First name" class="grid rounded-lg border border-black py-2 px-6 checked:to-purple-400">
+		</div>
+		<div class="grid">
+			<label for="title">Email</label>
+			<input type="email" id="email" placeholder="youremail@gmail.com" class="grid rounded-lg border border-black py-2 px-6 checked:to-purple-400">
+		</div>
+		<button class="bg-blue-50 px-[160px] py-2  rounded-lg mt-5 font-extralight">
+				<input type="submit" value="Submit">
+
+		</button>
+	</form>
+</div>
+			</section>
+			<section class="  section-top grid place-content-center rounded-lg text-white">
+				<div class="content">
+					<!-- <h1>Rendosland <span>Software Devloper</span></h1> -->
+					<a href="#" class="text-6xl font-extralight">Welcome Crosure</a>
+				</div>
+			</section>
+		</div>
+		
 </Layout>
+
+<style>
+	.tile{
+		font-family: cursive;
+
+	}
+
+	.section-top{
+        width:50%;
+		height:800px;
+		overflow: hidden;
+		position: relative;
+		background-image: url(/public/book.jpg);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		text-align: center;
+		justify-content: center;
+		animation: change 10s infinite ease-in-out;
+	}
+
+	/* .content{
+		position: absolute;
+		top:50%;
+		left:50%;
+		transform:translate(-50%, 50%);
+		text-tranform:uppercase;
+	} */
+
+	.content a:hover{
+
+	}
+
+	@keyframes change{
+		0%{
+			background-image: url(/public/book.jpg);
+		}
+		20%{
+			background-image: url(/public/book1.jpg);
+		}
+		40%{
+			background-image: url(/public/book2.jpg);
+		}
+		60%{
+			background-image: url(/public/book3.jpg);
+		}
+		80%{
+			background-image: url(/public/book4.jpg);
+		}
+		100%{
+			background-image: url(/public/book.jpg);
+		}
+	}
+</style>
+
+
+// Your Astro component
+<script>
+  const form = document.getElementById('myForm') as HTMLFormElement;
+
+
+  
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+
+	try {
+      const response = await fetch('/submit-form', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        // Successful submission, redirect to success page
+        window.location.href = '/blog';
+      } else {
+        // Handle errors, e.g., display an error message
+        console.error('Error:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+);
+
+</script>

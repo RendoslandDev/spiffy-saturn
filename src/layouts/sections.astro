@@ -1,0 +1,13 @@
+---
+import { Image } from "astro:assets";
+import NewsCard from "../componets/newsCard.astro";
+const response = await fetch(
+  "https://newsapi.org/v2/everything?q=Apple&from=2024-12-14&sortBy=popularity&apiKey=fd04e91d1f7141d3b2a61772f21d2151"
+);
+
+const data = await response.json();
+---
+
+
+
+ 
